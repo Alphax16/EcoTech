@@ -18,7 +18,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
-const Links = ['Dashboard', 'Projects', 'Team']
+const Links = ['Dashboard', 'Projects', 'Quiz']
 
 const NavLink = ({children}) => {
   
@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Box bg={'transparent'}  px={{lg:'32', md: '4', base:'4'}} position={'fixed'} zIndex={'100'} top={'0'} right={'0'} left={'0'}>
+      <Box bg={'transparent'}  px={{lg:'32', md: '4', base:'4'}} position={'absolute'} zIndex={'100'} top={'0'} right={'0'} left={'0'}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}

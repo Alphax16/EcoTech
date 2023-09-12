@@ -21,7 +21,7 @@ const HeroSection =()=> {
   const MotionText = motion(Text);
   const MotionImage = motion(Image);
   return (
-    <Box bg={'#12504B'}>
+    <Box bg={'#12504B'}  >
     <Navbar />
     <MotionContainer maxW={'8xl'}  height={'100vh'} backgroundImage="url('/assets/hero_background.jpg')"
     backgroundSize="cover"
@@ -30,8 +30,17 @@ const HeroSection =()=> {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 2.0 }}
-
-   
+      _before={{
+        content: '""',
+        position: 'absolute',
+        top: '99vh',
+        
+        left: 0,
+        right: 0,
+        height: '20px',
+        background: 'linear-gradient(to right, transparent, transparent 10%, #fff 10%, #fff 90%, transparent 90%, transparent)',
+        backgroundSize: '20px 100%', 
+      }}
 >
       <Stack
         align={'center'}
@@ -42,16 +51,19 @@ const HeroSection =()=> {
         direction={{ base: 'column', md: 'row' }}>
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
           <Heading
-            lineHeight={1.1}
+            lineHeight={0.6}
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
             <MotionText
-                            as={'span'}
+              
 
               position={'relative'}
               color={'white'}
               width={'max-content'}  
-            
+              initial={{  x: "50vw" }}
+              animate={{  x: 0 }}
+              
+              transition={{ duration: 3, origin: 1 }}
       
             //   _after={{
             //     content: "''",
@@ -128,6 +140,7 @@ const HeroSection =()=> {
               align={{lg:'right', base:'center'}}
               initial={{ width: "50vw", x: "50vw" }}
               animate={{ width: "50vw", x: 0 }}
+              margin={'auto'}
               transition={{ duration: 3, origin: 1 }}
           
               w={'100%'}
