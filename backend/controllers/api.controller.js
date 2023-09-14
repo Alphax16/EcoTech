@@ -1,3 +1,5 @@
+const runPythonScript = require("../utils/pythonScriptRunner");
+
 const WaterPotabilityPredictor = async (req, res) => {
   const {
     ph,
@@ -8,43 +10,16 @@ const WaterPotabilityPredictor = async (req, res) => {
     Conductivity,
     Organic_carbon,
     Trihalomethanes,
-    Turbidity,
+    Turbidity
   } = req.body;
-  try {
-    const pyprocess = spawn("py3", [
-      "models/WaterPotabilityPredictor.py",
-      ph,
-      Hardness,
-      Solids,
-      Chloramines,
-      Sulfate,
-      Conductivity,
-      Organic_carbon,
-      Trihalomethanes,
-      Turbidity,
-    ]);
-  } catch (ex) {
-    console.log(ex);
-  }
+  
+  const scriptPath = "./models/WaterPotabilityPredictor.py";
+  const cmdLineArgs = `${ph} ${Hardness} ${Solids} ${Chloramines} ${Sulfate} ${Conductivity} ${Organic_carbon} ${Trihalomethanes} ${Turbidity}`
 
-  pyprocess.stdout.on("data", (data) => {
-    console.log(data.toString());
-
-    result = data.toString();
-  });
-  pyprocess.on("close", () => {
-    res.json(result);
-  });
-
-  pyprocess.stderr.on("data", (data) => {
-    let json = JSON.stringify(data);
-    let bufferOriginal = Buffer.from(JSON.parse(json).data);
-
-    console.log(bufferOriginal.toString("utf8"));
-
-    console.error(data);
-    console.log(json);
-  });
+  const result = await runPythonScript(scriptPath, cmdLineArgs);
+  console.log('Result:', result);
+  
+  res.send(result);
 };
 
 module.exports = {
