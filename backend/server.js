@@ -1,12 +1,15 @@
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const _router = require("./routes/api.route");
+const _apiRouter = require("./routes/api.route");
+const _csvRouter = require("./routes/csv.route")
+require("dotenv").config();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-app.use(_router);
+app.use(_apiRouter);
+app.use(_csvRouter);
 
 const port = process.env.PORT || 5000;
 
