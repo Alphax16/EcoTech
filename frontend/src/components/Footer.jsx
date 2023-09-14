@@ -1,72 +1,137 @@
+
 import {
   Box,
-  chakra,
   Container,
+  SimpleGrid,
   Stack,
   Text,
+  Flex,
+  Tag,
   useColorModeValue,
-  VisuallyHidden,
 } from '@chakra-ui/react'
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { ReactNode } from 'react'
 
 
-const SocialButton = ({
-  children,
-  label,
-  href,
-}) => {
+const ListHeader = ({ children }) => {
   return (
-    <chakra.button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-      rounded={'full'}
-      w={8}
-      h={8}
-      cursor={'pointer'}
-      as={'a'}
-      href={href}
-      display={'inline-flex'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      transition={'background 0.3s ease'}
-      _hover={{
-        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
-      }}>
-      <VisuallyHidden>{label}</VisuallyHidden>
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
       {children}
-    </chakra.button>
+    </Text>
   )
 }
 
-const Footer = () => {
+const Footer = ()=> {
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
-      <Container
-        as={Stack}
-        maxW={'6xl'}
-        py={4}
-        direction={{ base: 'column', md: 'row' }}
-        spacing={4}
-        justify={{ base: 'center', md: 'space-between' }}
-        align={{ base: 'center', md: 'center' }}>
-        <Text fontWeight={'bold'}>LOGO</Text>
-        <Text>© 2023 Amigos. All rights reserved</Text>
-        <Stack direction={'row'} spacing={6}>
-          <SocialButton label={'Twitter'} href={'#'}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={'YouTube'} href={'#'}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={'Instagram'} href={'#'}>
-            <FaInstagram />
-          </SocialButton>
-        </Stack>
+      <Container as={Stack} maxW={'6xl'} py={10} textAlign={'center'}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8} >
+          <Stack align={'center'}>
+            <ListHeader>Product</ListHeader>
+            <Box as="a" href={'#'}>
+              Overview
+            </Box>
+            <Stack direction={'row'} align={'center'} spacing={2}>
+              <Box as="a" href={'#'}>
+                Features
+              </Box>
+      
+            </Stack>
+            <Box as="a" href={'#'}>
+              Tutorials
+            </Box>
+            <Box as="a" href={'#'}>
+              Pricing
+            </Box>
+            <Box as="a" href={'#'}>
+              Releases
+            </Box>
+          </Stack>
+          <Stack align={'center'}>
+            <ListHeader>Company</ListHeader>
+            <Box as="a" href={'#'}>
+              About Us
+            </Box>
+            <Box as="a" href={'#'}>
+              Press
+            </Box>
+            <Box as="a" href={'#'}>
+              Careers
+            </Box>
+            <Box as="a" href={'#'}>
+              Contact Us
+            </Box>
+            <Box as="a" href={'#'}>
+              Partners
+            </Box>
+          </Stack>
+          <Stack align={'center'}>
+            <ListHeader>Legal</ListHeader>
+            <Box as="a" href={'#'}>
+              Cookies Policy
+            </Box>
+            <Box as="a" href={'#'}>
+              Privacy Policy
+            </Box>
+            <Box as="a" href={'#'}>
+              Terms of Service
+            </Box>
+            <Box as="a" href={'#'}>
+              Law Enforcement
+            </Box>
+            <Box as="a" href={'#'}>
+              Status
+            </Box>
+          </Stack>
+          <Stack align={'center'}>
+            <ListHeader>Follow Us</ListHeader>
+            <Box as="a" href={'#'}>
+              Facebook
+            </Box>
+            <Box as="a" href={'#'}>
+              Twitter
+            </Box>
+            <Box as="a" href={'#'}>
+              Dribbble
+            </Box>
+            <Box as="a" href={'#'}>
+              Instagram
+            </Box>
+            <Box as="a" href={'#'}>
+              LinkedIn
+            </Box>
+          </Stack>
+        </SimpleGrid>
       </Container>
+      <Box py={10}>
+        <Flex
+          align={'center'}
+          _before={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: useColorModeValue('gray.200', 'gray.700'),
+            flexGrow: 1,
+            mr: 8,
+          }}
+          _after={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: useColorModeValue('gray.200', 'gray.700'),
+            flexGrow: 1,
+            ml: 8,
+          }}>
+          <Text fontWeight={'bold'}>LOGO</Text>
+        
+        </Flex>
+        <Text pt={6} fontSize={'sm'} textAlign={'center'}>
+        © 2023 Amigos. All rights reserved
+        </Text>
+      </Box>
     </Box>
   )
 }
+
+
 
 export default Footer;
