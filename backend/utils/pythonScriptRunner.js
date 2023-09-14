@@ -2,10 +2,8 @@ const { exec } = require('child_process');
 
 async function runPythonScript(scriptPath, cmdLineArgs, virtualEnvPath = 'ECO_ENV') {
     try {
-        // Determine the correct shell command based on the platform
         const shell = process.platform === 'win32' ? 'cmd' : 'bash';
 
-        // Activate the virtual environment and run the Python script
         const activationScript = process.platform === 'win32' ? `"${virtualEnvPath}\\Scripts\\activate"` : `source ./${virtualEnvPath}/bin/activate`;
         
         const pythonScriptCommand = `python "${scriptPath}" ${cmdLineArgs}`;
@@ -16,11 +14,10 @@ async function runPythonScript(scriptPath, cmdLineArgs, virtualEnvPath = 'ECO_EN
         const { stdout, stderr } = await executeCommand(shell, fullCommand);
 
         if (stderr) {
-            console.error('Python stderr:', stderr); // Print Python error messages
+            console.error('Python stderr:', stderr);
             throw new Error('Python script encountered an error.');
         }
 
-        // Return the stdout as the result of the function
         return stdout;
     } catch (err) {
         throw err;

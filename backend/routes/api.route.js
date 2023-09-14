@@ -1,11 +1,11 @@
 const express = require("express");
 
 const apicontroller = require("../controllers/api.controller");
-const router = express.Router();
+const _router = express.Router();
 
-router.post(
+_router.post(
   "/api/WaterPotabilityPredictor",
   apicontroller.WaterPotabilityPredictor
 );
 
-module.exports = router;
+module.exports = _router;

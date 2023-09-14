@@ -13,7 +13,7 @@ const WaterPotabilityPredictor = async (req, res) => {
     Turbidity
   } = req.body;
   
-  const scriptPath = "./models/WaterPotabilityPredictor.py";
+  const scriptPath = "./python-models/WaterPotabilityPredictor.py";
   const cmdLineArgs = `${ph} ${Hardness} ${Solids} ${Chloramines} ${Sulfate} ${Conductivity} ${Organic_carbon} ${Trihalomethanes} ${Turbidity}`
 
   const result = await runPythonScript(scriptPath, cmdLineArgs);
