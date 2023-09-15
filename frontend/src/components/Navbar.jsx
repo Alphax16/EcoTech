@@ -3,46 +3,42 @@ import {
   Flex,
   Avatar,
   HStack,
-  Text,
+
   IconButton,
   Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
+
+
   useDisclosure,
-  useColorModeValue,
+
   Stack,
 } from '@chakra-ui/react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
+import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
+import { useEffect, useState } from 'react';
+const Links = [
+  { name: 'Dashboard', path: '/' }, // Define routes and names
+  { name: 'Projects', path: '/projects' },
+  { name: 'Quiz', path: '/quiz' },
+];
 
-const Links = ['Dashboard', 'Projects', 'Quiz']
 
-const NavLink = ({children}) => {
-  
-
-  return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      color={'#fff'}
-      rounded={'md'}
-      _hover={{
-        textDecoration: 'none',
-        bg: '#C1E836',
-        color: 'black'
-      }}
-      href={'#'}>
-      {children}
-    </Box>
-  )
-}
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const location = useLocation(); // Get the current route
+  const [activeLink, setActiveLink] = useState('/'); // Initialize with the default route
+  const updateActiveLink = () => {
+    const currentPath = location.pathname;
+    setActiveLink(currentPath);
+  };
+
+  
+  useEffect(() => {
+    updateActiveLink();
+  }, [location]);
 
   return (
     <>
@@ -59,7 +55,20 @@ const Navbar = () => {
             <Box backgroundColor={'#fff'} p={'2'} borderRadius={'2xl'}>Logo</Box>
             <HStack as={'nav'} fontWeight={'bold'} spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <Link
+                key={link.path}
+                to={link.path}
+                style={{
+                  textDecoration: 'none',
+                  backgroundColor: activeLink === link.path ? '#C1E836' : 'transparent',
+                  color: activeLink === link.path ? 'black' : '#fff',
+                  padding: activeLink === link.path? '5px': 'auto',
+                  borderRadius: activeLink === link.path? '20px': '0px',
+                }}
+                
+              >
+                {link.name}
+              </Link>
               ))}
             </HStack>
           </HStack>
@@ -87,7 +96,26 @@ const Navbar = () => {
 <Box pb={4} display={{ md: 'none' }}>
 <Stack as={'nav'} spacing={4}>
 {Links.map((link) => (
-<NavLink key={link}>{link}</NavLink>
+  <Link
+  key={link.path}
+  to={link.path}
+  style={{
+    textDecoration: 'none',
+    backgroundColor: activeLink === link.path ? '#C1E836' : 'transparent',
+    color: activeLink === link.path ? 'black' : '#fff',
+  }}
+  p={2}
+  rounded={'md'}
+  _hover={{
+    textDecoration: 'none',
+    backgroundColor: '#C1E836',
+    color: 'black',
+  }}
+
+>
+  {link.name}
+</Link>
+
 ))}
 </Stack>
 </Box>
