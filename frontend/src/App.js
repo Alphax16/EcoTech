@@ -5,6 +5,8 @@ import Home from "./containers/Home";
 import Quiz from "./containers/Quiz";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import ForestMap from "./containers/ForestMap";
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/forest-map" element={<ForestMap />} />
       </Routes>
       <Footer />
     </Router>
