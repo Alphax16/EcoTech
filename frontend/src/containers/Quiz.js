@@ -57,7 +57,7 @@ function Quiz() {
                 fontSize={"xl"}
                 p={"3"}
               >
-                {questions[currentIndex].question}
+                Q. {currentIndex + 1} {questions[currentIndex].question}
               </Text>
               <UnorderedList>
                 {questions[currentIndex].options.map((option, optionIndex) => (
@@ -89,7 +89,14 @@ function Quiz() {
                 ))}
               </UnorderedList>
               <Center flexDir={"column"}>
-                {currentIndex >= questions.length - 1 ? (
+                <Button
+                  bg={"green.100"}
+                  border={"1px solid black"}
+                  onClick={() => handleAnswerSubmit(selectedOption)}
+                >
+                  Next
+                </Button>
+                {/* {currentIndex >= questions.length - 1 ? (
                   <Button
                     bg={"green.500"}
                     border={"1px solid black"}
@@ -105,7 +112,7 @@ function Quiz() {
                   >
                     Next
                   </Button>
-                )}
+                )} */}
 
                 <Text my={"4"}>Score: {score}</Text>
               </Center>
