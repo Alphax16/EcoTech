@@ -1,1 +1,1 @@
-The project is made using mern stack
+The project is made using MERN stack.
