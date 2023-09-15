@@ -1,14 +1,6 @@
-import {
-  Box,
-  Center,
-  Flex,
-  FormLabel,
-  List,
-  Text,
-  UnorderedList,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Center, Flex, FormLabel, List, Text, UnorderedList, Button } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
+
 
 function Quiz() {
   const [questions, setQuestions] = useState([]);
