@@ -15,9 +15,22 @@ const WaterPotabilityPredictor = () => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
-        "  http://localhost:5000/api/WaterPotabilityPredictor"
+        "  http://localhost:5000/api/WaterPotabilityPredictor",
+        {
+          ph,
+          Hardness,
+          Solids,
+          Chloramines,
+          Organic_carbon,
+
+          Trihalomethanes,
+          Turbidity,
+          Sulfate,
+          Conductivity,
+        }
       );
       console.log(response.data);
       alert(response.data);
