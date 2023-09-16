@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Center,useColorModeValue,Image,Stack, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text, Center,useColorModeValue,Image,useMediaQuery,Stack, Heading } from "@chakra-ui/react";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 
@@ -6,6 +6,8 @@ const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
 
 const PollutionTypes = () => {
+
+  
   return (
     <Box bg="url('/assets/pollution_green.jpg')" bgPos={'center'} bgRepeat={'no-repeat'}  backgroundSize="cover">
    {/* <Box bg={''}>  */}
@@ -17,16 +19,20 @@ const PollutionTypes = () => {
 };
 
 const HorizontalScrollCarousel = () => {
+  const [isLargeScreen] = useMediaQuery("(max-width: 1024px)");
+  const [isExtraLargeScreen] = useMediaQuery("(min-width: 1280px)");
+
     const MotionBox = motion(Box);
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
       target: targetRef,
     });
   
-    const x = useTransform(scrollYProgress, [0, 2], ["1%", "-96%"]);
+    const x = useTransform(scrollYProgress, [0, isLargeScreen ? 1 : 2], ["1%","-96%"]);
+
 
   return (
-    <Box pos="relative" ref={targetRef}  h="140vh" >
+    <Box pos="relative" ref={targetRef}  h={{base:'180vh' ,lg:"140vh"}} >
         <Center py={'5'}>
           <Text fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }} color={'#fff'} fontWeight={'bold'}>
     Types of Pollution

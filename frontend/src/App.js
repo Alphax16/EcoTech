@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ForestMap from "./containers/ForestMap";
 import WaterPotabilityPredictor from "./containers/WaterPotabilityPredictor";
+import NotFound from "./containers/NotFound";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           path="/model/WaterPotabilityPredictor"
           element={<WaterPotabilityPredictor />}
         />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

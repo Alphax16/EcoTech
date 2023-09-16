@@ -13,6 +13,7 @@ import {
   useDisclosure,
 
   Stack,
+  Image,
 } from '@chakra-ui/react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
@@ -21,8 +22,8 @@ import { useEffect, useState } from 'react';
 const Links = [
   { name: 'Home', path: '/' }, // Define routes and names
   { name: 'Statistics', path: '/statistics' },
-  { name: 'Visualisation', path: '/visualisation' },
-  { name: 'AI models', path: '/models' },
+  { name: 'Visualisations', path: '/visualisation' },
+  { name: 'ML models', path: '/models' },
   { name: 'Quiz', path: '/quiz' },
 ];
 
@@ -47,14 +48,15 @@ const Navbar = () => {
       <Box bg={'transparent'}  px={{lg:'32', md: '4', base:'4'}} position={'absolute'} zIndex={'100'} top={'0'} right={'0'} left={'0'}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
-            size={'md'}
-            icon={isOpen ? <AiOutlineCloseCircle fontSize={'40'} /> : <GiHamburgerMenu fontSize={'40'}/>}
+            size={'sm'}
+            icon={isOpen ? <AiOutlineCloseCircle fontSize={'32'} /> : <GiHamburgerMenu fontSize={'32'}/>}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
+            bg={'gray.200'}
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box backgroundColor={'#fff'} p={'2'} borderRadius={'2xl'}>Logo</Box>
+          
             <HStack as={'nav'} fontWeight={'bold'} spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
                 <Link
