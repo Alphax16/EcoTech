@@ -60,10 +60,10 @@ const HeroSection =()=> {
               position={'relative'}
               color={'white'}
               width={'max-content'}  
-              initial={{  x: "50vw" }}
+              initial={{  x: "-50vw" }}
               animate={{  x: 0 }}
               
-              transition={{ duration: 3, origin: 1 }}
+              transition={{ duration: 1, origin: 1, delay: 0.3 }}
       
             //   _after={{
             //     content: "''",
@@ -79,15 +79,31 @@ const HeroSection =()=> {
               Powering Tech,
             </MotionText>
             <br />
-            <Text as={'span'} color={'#C1E836'}>
+            <MotionText
+              
+
+              position={'relative'}
+              
+              width={'max-content'}  
+              initial={{  x: "-50vw" }}
+              animate={{  x: 0 }}
+              
+              transition={{ duration: 1, origin: 1, delay: 0.6 }} color={'#C1E836'}>
             Preserving Eco
-            </Text>
+            </MotionText>
           </Heading>
-          <Text color={'white'}>
+          <MotionText
+              
+
+            
+              initial={{  x: "-50vw" }}
+              animate={{  x: 0 }}
+              
+              transition={{ duration: 1, origin: 1, delay:0.9 }}  color={'white'}>
             Snippy is a rich coding snippets app that lets you create your own code
             snippets, categorize them, and even sync them in the cloud so you can use them
             anywhere. All that is free!
-          </Text>
+          </MotionText>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
             <Button
               rounded={'full'}
@@ -141,7 +157,7 @@ const HeroSection =()=> {
               initial={{ width: "50vw", x: "50vw" }}
               animate={{ width: "50vw", x: 0 }}
               margin={'auto'}
-              transition={{ duration: 3, origin: 1 }}
+              transition={{ duration: 1, origin: 1.2 }}
           
               w={'100%'}
               h={{lg: '100%', base:'75%'}}
