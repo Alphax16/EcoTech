@@ -2,11 +2,17 @@ from pickle import load
 import warnings
 import numpy as np
 from sys import argv
+import os
 
 
 warnings.filterwarnings('ignore')
 
-with open("..\weights-pickles\WaterPotability_Final.pkl", 'rb') as fpk:
+current_directory = os.getcwd()
+items = os.listdir(current_directory)
+items_string = ', '.join(items)
+print(items_string)
+
+with open(".\weights-pickles\WaterPotability_Final.pkl", 'rb') as fpk:
     model = load(fpk)
 
 # print(model)
