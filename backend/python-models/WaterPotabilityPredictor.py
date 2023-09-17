@@ -6,7 +6,7 @@ from sys import argv
 
 warnings.filterwarnings('ignore')
 
-with open(".\weights-pickles\WaterPotability_Final.pkl", 'rb') as fpk:
+with open("..\weights-pickles\WaterPotability_Final.pkl", 'rb') as fpk:
     model = load(fpk)
 
 # print(model)
