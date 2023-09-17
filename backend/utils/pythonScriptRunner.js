@@ -26,10 +26,10 @@ async function runPythonScript(scriptPath, cmdLineArgs, virtualEnvPath = 'ECO_EN
 
 function executeCommand(shell, command) {
     return new Promise((resolve, reject) => {
-        const childProcess = exec((shell == 'cmd') ? `${shell} /c "${command}"` : `${shell} -c "${command}"`, (error, stdout, stderr) => {
-            if (error) {
-                console.error('Error while executing command:', error);
-                reject(error);
+        const childProcess = exec(`${shell} ${(shell == 'cmd') ? '/c' : '-c'} "${command}"`, (err, stdout, stderr) => {
+            if (err) {
+                console.error('Error while executing command:', err);
+                reject(err);
             } else {
                 resolve({ stdout, stderr });
             }
