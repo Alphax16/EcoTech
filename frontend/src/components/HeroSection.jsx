@@ -22,7 +22,7 @@ const HeroSection =()=> {
   const MotionImage = motion(Image);
   return (
     <Box bg={'#12504B'}  >
-    <Navbar />
+    
     <MotionContainer maxW={'8xl'}  height={'100vh'} backgroundImage="url('/assets/hero_background.jpg')"
     backgroundSize="cover"
     bgRepeat={'no-repeat'}

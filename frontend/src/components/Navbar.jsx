@@ -19,8 +19,10 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 import { Link, useLocation } from 'react-router-dom'; // Import Link and useLocation
 import { useEffect, useState } from 'react';
 const Links = [
-  { name: 'Dashboard', path: '/' }, // Define routes and names
-  { name: 'Projects', path: '/projects' },
+  { name: 'Home', path: '/' }, // Define routes and names
+  { name: 'Statistics', path: '/statistics' },
+  { name: 'Visualisation', path: '/visualisation' },
+  { name: 'AI models', path: '/models' },
   { name: 'Quiz', path: '/quiz' },
 ];
 
